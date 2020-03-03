@@ -266,6 +266,10 @@ namespace JPEGtoPDF
 
             table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
 
+
+
+
+
             return table;
         }
     }
