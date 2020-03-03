@@ -173,6 +173,12 @@ namespace JPEGtoPDF
                                 case "21x15_2P2L": table = Custom.customTable3(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
                                 case "21x15_1P3L": table = Custom.customTable3(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
                                 case "21x15_0P4L": table = Custom.customTable3(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+
+
+                                case "20x20_1P2L": table = Custom.customTable4(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_2P1L": table = Custom.customTable5(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_0P3L": table = Custom.customTable6(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_3P0L": table = Custom.customTable7(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
                             }
                             Console.WriteLine("Portraits: "+getPortrait(currentImgsList)+"Landscapes: "+ getLandscape(currentImgsList));
                             currentImgsList.Clear();

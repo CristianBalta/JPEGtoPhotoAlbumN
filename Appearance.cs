@@ -167,6 +167,40 @@ namespace JPEGtoPDF
                 this.heightRatio = 2;
                 this.specialCond = "21x15_0P4L";
             }
+            
+            
+            
+            
+            
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 3 && nrLandscape == 2 && nrPortrait == 1)
+            {
+                Console.WriteLine("1 portrete 2 landscape");
+                this.dimensions = new float[] { 1};
+                this.heightRatio = 2;
+                this.specialCond = "20x20_1P2L";
+            }
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 3 && nrLandscape == 1 && nrPortrait == 2)
+            {
+                Console.WriteLine("2 portrete 1 landscape");
+                this.dimensions = new float[] { 1};
+                this.heightRatio = 2;
+                this.specialCond = "20x20_2P1L";
+            }
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 3 && nrLandscape == 3 && nrPortrait == 0)
+            {
+                Console.WriteLine("0 portrete 3 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_0P3L";
+            }
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 3 && nrLandscape == 0 && nrPortrait == 3)
+            {
+                Console.WriteLine("3 portrete 0 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_3P0L";
+            }
+
         }
     }
 }
