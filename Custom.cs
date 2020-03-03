@@ -47,7 +47,7 @@ namespace JPEGtoPDF
                         auxImgSelection = currentImgsList[i]; currentImgsList[i] = currentImgsList[i + 1]; currentImgsList[i + 1] = auxImgSelection;
                 }
                 N--;
-                 
+                
 
             }
         }
@@ -265,6 +265,8 @@ namespace JPEGtoPDF
             table.UseAllAvailableWidth().SetDocument(pdoc);
 
             table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+
+
 
 
 
