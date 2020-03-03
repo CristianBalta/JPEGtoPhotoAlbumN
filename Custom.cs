@@ -23,6 +23,7 @@ using UnitValue = iText.Layout.Properties.UnitValue;
 using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
 using VerticalAlignment = iText.Layout.Properties.VerticalAlignment;
 
+
 namespace JPEGtoPDF
 {
     class Custom
@@ -149,7 +150,6 @@ namespace JPEGtoPDF
             Table table2 = new Table(new float[] { 1,1},false);
 
             table2.SetHeight(UnitValue.CreatePointValue(table.GetHeight().GetValue() / 2));
-            //table2.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue() / 2));
             table2.UseAllAvailableWidth();
             Cell cell1 = new Cell(2,1);
             cell1.SetHeight(table.GetHeight());
@@ -176,6 +176,9 @@ namespace JPEGtoPDF
             cell6.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue() / 4));
             cell6.Add(currentImgs.ElementAt(2).SetAutoScale(true));
 
+            cell5.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            cell6.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
             table2.AddCell(cell5);
             table2.AddCell(cell6);
             
@@ -187,8 +190,17 @@ namespace JPEGtoPDF
             cell2.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue() / 2));
             cell2.Add(currentImgs.ElementAt(3).SetAutoScale(true));
 
+            cell1.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            cell2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            cell3.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            
+
+
+
+
             table.AddCell(cell1);
             table.AddCell(cell2);
+
             return table;
 
         }
@@ -260,16 +272,226 @@ namespace JPEGtoPDF
             float[] dim = appearance.getDimensions();
 
             Table table = new Table(dim, true);
-            Table table1 = new Table(dim, true);
 
             sorting(currentImgsList, currentImgs);
             table.UseAllAvailableWidth().SetDocument(pdoc);
 
             table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
 
+            sorting(currentImgsList, currentImgs);
+
+            Cell cell1 = new Cell(2, 1);
+            cell1.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell1.SetHeight(table.GetHeight());
+            cell1.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue()));
+            Table table2 = new Table(new float[] { 1, 1 },false);
+
+            table2.SetHeight(UnitValue.CreatePercentValue(40f));
+            table2.UseAllAvailableWidth();
+
+            Cell cell3 = new Cell();
+            cell3.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell3.SetWidth(UnitValue.CreatePercentValue(75f));
+            cell3.Add(currentImgs.ElementAt(0).SetAutoScale(true));
+            cell3.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            cell3.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+
+            Cell cell4 = new Cell();
+            cell4.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell4.SetWidth(UnitValue.CreatePercentValue(25f));
+            cell4.Add(currentImgs.ElementAt(2).SetAutoScale(true));
+
+            table2.AddCell(cell3);
+            table2.AddCell(cell4);
+
+            cell1.Add(table2);
+
+            Cell cell2 = new Cell();
+            cell2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell2.SetHeight(UnitValue.CreatePercentValue(60f));
+            cell2.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue()));
+            
+            cell2.Add(currentImgs.ElementAt(1).SetAutoScale(true));
+            cell2.SetPaddingLeft(30f);
+            cell2.SetPaddingRight(30f);
+
+            cell1.Add(cell2);
+
+            table.AddCell(cell1);
+
+            return table;
+        }
+
+
+        public static Table customTable5(Appearance appearance, PageSize pageSize, Document pdoc, List<ImageSelection> currentImgsList, List<Image> currentImgs)
+        {
+            float[] dim = appearance.getDimensions();
+
+            Table table = new Table(dim, true);
+
+            sorting(currentImgsList, currentImgs);
+            table.UseAllAvailableWidth().SetDocument(pdoc);
+
+            table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+
+            sorting(currentImgsList, currentImgs);
+
+
+            Cell cell1 = new Cell(2, 1);
+            Cell cell2 = new Cell();
+            Cell cell3 = new Cell();
+            cell1.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell1.SetHeight(table.GetHeight());
+            cell1.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue()));
+            Table table2 = new Table(new float[] { 1, 1 }, false);
+
+            table2.SetHeight(UnitValue.CreatePercentValue(70f));
+            table2.UseAllAvailableWidth();
+
+            cell2.SetWidth(UnitValue.CreatePercentValue(50f));
+            cell2.Add(currentImgs.ElementAt(1).SetAutoScale(true));
+            cell2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell3.SetWidth(UnitValue.CreatePercentValue(50f));
+            cell3.Add(currentImgs.ElementAt(2).SetAutoScale(true));
+            cell3.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+
+            table2.AddCell(cell2);
+            table2.AddCell(cell3);
+
+
+            Cell cell4 = new Cell();
+
+            cell4.SetHeight(UnitValue.CreatePercentValue(30f));
+            cell4.SetPaddingLeft(60f);
+            cell4.SetPaddingRight(60f);
+            cell4.Add(currentImgs.ElementAt(0).SetAutoScale(true));
+            cell4.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell1.Add(table2);
+            cell1.Add(cell4);
+
+            table.AddCell(cell1);
+
+            return table;
+        }
+
+        public static Table customTable6(Appearance appearance, PageSize pageSize, Document pdoc, List<ImageSelection> currentImgsList, List<Image> currentImgs)
+        {
+            float[] dim = appearance.getDimensions();
+
+            Table table = new Table(dim, true);
+
+            sorting(currentImgsList, currentImgs);
+            table.UseAllAvailableWidth().SetDocument(pdoc);
+
+            table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+
+            sorting(currentImgsList, currentImgs);
+
+
+            Cell cell1 = new Cell(2, 1);
+            Cell cell2 = new Cell();
+            Cell cell3 = new Cell();
+            cell1.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell1.SetHeight(table.GetHeight());
+            cell1.SetWidth(UnitValue.CreatePointValue(table.GetWidth().GetValue()));
+            Table table2 = new Table(new float[] { 1, 1 }, false);
+
+            table2.SetHeight(UnitValue.CreatePercentValue(30f));
+            table2.UseAllAvailableWidth();
+
+            cell2.SetWidth(UnitValue.CreatePercentValue(30f));
+            cell2.Add(currentImgs.ElementAt(1).SetAutoScale(true));
+            cell2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell3.SetWidth(UnitValue.CreatePercentValue(30f));
+            cell3.Add(currentImgs.ElementAt(2).SetAutoScale(true));
+            cell3.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+
+            table2.AddCell(cell2);
+            table2.AddCell(cell3);
+
+            Cell cell4 = new Cell();
+            cell4.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            cell4.SetHeight(UnitValue.CreatePercentValue(70f));
+            cell4.Add(currentImgs.ElementAt(0).SetAutoScale(true));
+
+            cell1.Add(cell4);
+            cell1.Add(table2);
+
+            table.AddCell(cell1);
 
 
             return table;
         }
-    }
+
+        public static Table customTable7(Appearance appearance, PageSize pageSize, Document pdoc, List<ImageSelection> currentImgsList, List<Image> currentImgs)
+        {
+            float[] dim = appearance.getDimensions();
+
+            Table table = new Table(dim, true);
+
+            sorting(currentImgsList, currentImgs);
+            table.UseAllAvailableWidth().SetDocument(pdoc);
+
+            table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+
+            sorting(currentImgsList, currentImgs);
+
+           
+
+            Cell cell1 = new Cell();
+            cell1.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell1.SetHeight(table.GetHeight());
+            cell1.SetWidth(UnitValue.CreatePercentValue(70f));
+            cell1.Add(currentImgs.ElementAt(0).SetAutoScale(true));
+
+
+            Cell cell2 = new Cell(2, 1);
+            cell2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            Cell cell3 = new Cell();
+            cell3.SetPaddingTop(30f);
+            cell3.SetHeight(table.GetHeight().GetValue()/2);
+            cell3.Add(currentImgs.ElementAt(1).SetAutoScale(true));
+            cell3.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            Cell cell4 = new Cell();
+            cell4.SetPaddingBottom(30f);
+            cell4.SetHeight(table.GetHeight().GetValue() / 2);
+            cell4.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            cell4.Add(currentImgs.ElementAt(2).SetAutoScale(true));
+
+            Table table2 = new Table(new float[] { 1, 1 }, false);
+
+            table2.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+            table2.UseAllAvailableWidth();
+            table2.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+            table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+            cell2.Add(cell3);
+            cell2.Add(cell4);
+
+            table2.AddCell(cell1);
+            table2.AddCell(cell2);
+
+
+            table.AddCell(table2.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
+
+
+            return table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+        }
+
+        }
+    
     }
