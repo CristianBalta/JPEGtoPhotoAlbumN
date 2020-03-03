@@ -260,6 +260,7 @@ namespace JPEGtoPDF
             float[] dim = appearance.getDimensions();
 
             Table table = new Table(dim, true);
+            Table table1 = new Table(dim, true);
 
             sorting(currentImgsList, currentImgs);
             table.UseAllAvailableWidth().SetDocument(pdoc);
