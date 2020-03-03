@@ -255,6 +255,18 @@ namespace JPEGtoPDF
             return table;
         }
 
+        public static Table customTable4(Appearance appearance, PageSize pageSize, Document pdoc, List<ImageSelection> currentImgsList, List<Image> currentImgs)
+        {
+            float[] dim = appearance.getDimensions();
 
+            Table table = new Table(dim, true);
+
+            sorting(currentImgsList, currentImgs);
+            table.UseAllAvailableWidth().SetDocument(pdoc);
+
+            table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+
+            return table;
+        }
     }
     }
