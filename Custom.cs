@@ -265,7 +265,9 @@ namespace JPEGtoPDF
             table.UseAllAvailableWidth().SetDocument(pdoc);
 
             table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
-            //dkjfndjakfdanfflka
+
+
+
             return table;
         }
     }
