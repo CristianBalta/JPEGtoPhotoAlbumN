@@ -36,7 +36,7 @@ using NPOI.Util;
 using MetadataExtractor.Formats.Exif;
 
 namespace JPEGtoPDF
-{
+{ 
 
 
     class PDFMaker
