@@ -26,9 +26,9 @@ namespace JPEGtoPDF
     public partial class FormImageToPDF : Form
     {
         
-        public string saveLocation = Environment.CurrentDirectory;
-        
-        int imgNumber=1;
+        public string saveLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+        int imgNumber = 1;
 
         List<ImageSelection> listImages = new List<ImageSelection>();
 
@@ -102,8 +102,8 @@ namespace JPEGtoPDF
 
         private void addFiles_Click(object sender, EventArgs e)
         {
-            string[] pathToImages = null;
-            string[] fileNames = null;
+            string[] pathToImages;
+            string[] fileNames;
             ImageSelection currentImageSelection;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
@@ -175,11 +175,7 @@ namespace JPEGtoPDF
                 DialogResult result = fbd.ShowDialog();
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
                     textBoxOutputPath.Text = fbd.SelectedPath;
-
-
-                }
             }
         }
 
@@ -190,11 +186,6 @@ namespace JPEGtoPDF
 
             pdfName = textBoxPDFName.Text;
             if (!(textBoxPDFName.Text.EndsWith(".pdf"))) pdfName += ".pdf";
-            
-
-           
-
-
             
             AppearanceType appearanceType= AppearanceType.Portrait;
 
@@ -236,6 +227,31 @@ namespace JPEGtoPDF
 
             if(checkBoxAppearance.Checked) PDFMaker.createDocument(listImages, appearance, pageSize, exportFile, format);
             else  PDFMaker.createDocument(listImages, appearance, pageSize, exportFile, format,true);
+
+
+            List<ImageSelection> imagesToDelete = new List<ImageSelection>();
+
+            foreach (ImageSelection garbage in listBoxImageFile.Items)
+                imagesToDelete.Add(garbage);
+
+            foreach (ImageSelection imageToDelete in imagesToDelete)
+            {
+                listBoxImageFile.Items.Remove(imageToDelete);
+
+                foreach (ImageSelection image in listImages)
+                {
+                    if (image.ToString() == imageToDelete.ToString())
+                    {
+                        listImages.Remove(image);
+                        break;
+                    }
+                }
+            }
+            labelNrImages.Text = "Images :      " + listImages.Count;
+            labelFullPages.Text = "Full Pages : " + (listImages.Count / imgNumber).ToString();
+            PDFMaker.setOrientation = false;
+           
+
         }
         
 
@@ -271,6 +287,7 @@ namespace JPEGtoPDF
         private void button1_Click(object sender, EventArgs e)
         {
             formatInformation formatInformation = new formatInformation();
+            formatInformation.TopMost = true;
             formatInformation.Show();
         }
 

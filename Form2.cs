@@ -15,6 +15,7 @@ namespace JPEGtoPDF
         public formatInformation()
         {
             InitializeComponent();
+            
         }
     }
 }

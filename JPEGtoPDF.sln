@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFExpertPhoto", "PDFExpertPhoto.csproj", "{9CC7AD22-FCAA-47BB-9E76-C0604ECD3997}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDF Expert Photo", "PDF Expert Photo\PDF Expert Photo\PDF Expert Photo.vdproj", "{1C017D2F-8ECB-4CBB-B00E-1BBB3E41DEB2}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDF Expert Photo", "..\PDF Expert Photo\PDF Expert Photo.vdproj", "{8174692B-37E3-4AE1-A98F-D921FDA57257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{9CC7AD22-FCAA-47BB-9E76-C0604ECD3997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CC7AD22-FCAA-47BB-9E76-C0604ECD3997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CC7AD22-FCAA-47BB-9E76-C0604ECD3997}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C017D2F-8ECB-4CBB-B00E-1BBB3E41DEB2}.Debug|Any CPU.ActiveCfg = Debug
-		{1C017D2F-8ECB-4CBB-B00E-1BBB3E41DEB2}.Release|Any CPU.ActiveCfg = Release
+		{8174692B-37E3-4AE1-A98F-D921FDA57257}.Debug|Any CPU.ActiveCfg = Debug
+		{8174692B-37E3-4AE1-A98F-D921FDA57257}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

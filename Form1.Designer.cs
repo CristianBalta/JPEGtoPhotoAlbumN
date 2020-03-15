@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageToPDF));
             this.removeSelected = new System.Windows.Forms.Button();
             this.addFiles = new System.Windows.Forms.Button();
             this.savePDF = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.listBoxImageFile = new System.Windows.Forms.ListBox();
             this.labelImageFiles = new System.Windows.Forms.Label();
             this.panelPageSizeSettings = new System.Windows.Forms.Panel();
+            this.checkBoxAppearance = new System.Windows.Forms.CheckBox();
             this.infoButton = new System.Windows.Forms.Button();
             this.comboBoxAppearance = new System.Windows.Forms.ComboBox();
             this.comboBoxPages = new System.Windows.Forms.ComboBox();
@@ -53,7 +55,6 @@
             this.labelPageSize = new System.Windows.Forms.Label();
             this.labelFullPages = new System.Windows.Forms.Label();
             this.labelNrImages = new System.Windows.Forms.Label();
-            this.checkBoxAppearance = new System.Windows.Forms.CheckBox();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.panelPageSizeSettings.SuspendLayout();
@@ -169,6 +170,18 @@
             this.panelPageSizeSettings.Name = "panelPageSizeSettings";
             this.panelPageSizeSettings.Size = new System.Drawing.Size(324, 250);
             this.panelPageSizeSettings.TabIndex = 13;
+            // 
+            // checkBoxAppearance
+            // 
+            this.checkBoxAppearance.AutoSize = true;
+            this.checkBoxAppearance.Location = new System.Drawing.Point(6, 160);
+            this.checkBoxAppearance.Name = "checkBoxAppearance";
+            this.checkBoxAppearance.Size = new System.Drawing.Size(155, 21);
+            this.checkBoxAppearance.TabIndex = 27;
+            this.checkBoxAppearance.Text = "Format Appearance";
+            this.checkBoxAppearance.UseVisualStyleBackColor = true;
+            this.checkBoxAppearance.Visible = false;
+            this.checkBoxAppearance.CheckedChanged += new System.EventHandler(this.checkBoxAppearance_CheckedChanged);
             // 
             // infoButton
             // 
@@ -314,17 +327,6 @@
             this.labelNrImages.TabIndex = 18;
             this.labelNrImages.Text = "Images :      ";
             // 
-            // checkBoxAppearance
-            // 
-            this.checkBoxAppearance.AutoSize = true;
-            this.checkBoxAppearance.Location = new System.Drawing.Point(6, 160);
-            this.checkBoxAppearance.Name = "checkBoxAppearance";
-            this.checkBoxAppearance.Size = new System.Drawing.Size(155, 21);
-            this.checkBoxAppearance.TabIndex = 27;
-            this.checkBoxAppearance.Text = "Format Appearance";
-            this.checkBoxAppearance.UseVisualStyleBackColor = true;
-            this.checkBoxAppearance.CheckedChanged += new System.EventHandler(this.checkBoxAppearance_CheckedChanged);
-            // 
             // FormImageToPDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -340,6 +342,8 @@
             this.Controls.Add(this.panelSelection);
             this.Controls.Add(this.savePDF);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormImageToPDF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDF Expert Photo";

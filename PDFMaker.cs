@@ -22,7 +22,6 @@ using UnitValue = iText.Layout.Properties.UnitValue;
 
 using HorizontalAlignment = iText.Layout.Properties.HorizontalAlignment;
 using VerticalAlignment = iText.Layout.Properties.VerticalAlignment;
-//using GetHeight = iText.Layout.Style.GetHeight;
 using NUnit.Framework;
 using iTextSharp.text.pdf;
 using iText.Kernel.Colors;
@@ -57,7 +56,25 @@ namespace JPEGtoPDF
 
                     Table table = tableStyle(coverAppearance, pageSize, pdoc);
                     table = tableStyle(coverAppearance, pageSize, pdoc);
-                    Image imgc = new Image(iText.IO.Image.ImageDataFactory.Create(listImages.ElementAt(0).getPath()));
+                    Image imgc = null;
+                    try
+                    {
+                         imgc = new Image(iText.IO.Image.ImageDataFactory.Create(listImages.ElementAt(0).getPath()));
+                    }
+                    catch(Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                        MessageBox.Show("There's no image selected !", "",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        pdoc = null;
+                        //pdf = null;
+                        pdf.AddNewPage();
+                        pdf.Close();
+                        writer.Close();
+                        File.Delete(exportFile);
+                        
+                        return;
+                    }
+                        
                     imgStyle(ref imgc, listImages.ElementAt(0));
 
                     table.GetCell(0, 0).Add(imgc);
@@ -106,7 +123,6 @@ namespace JPEGtoPDF
 
                     pdoc.Close();
 
-
                 }
             }
 
@@ -117,12 +133,13 @@ namespace JPEGtoPDF
 
             checkSameDocuments(ref exportFile);
 
+            Console.WriteLine();
             using (PdfWriter writer = new PdfWriter(exportFile))
             {
                 using (PdfDocument pdf = new PdfDocument(writer))
                 {
                     Document pdoc = new Document(pdf, pageSize);
-                    pdoc.SetMargins(8.5f, 8.5f, 8.5f, 8.5f);
+                    pdoc.SetMargins(0f, 0f, 0f, 0f);
                     Appearance coverAppearance = new Appearance(appearance.getAppearanceType(), format, 1);
                     Appearance currentAppearance;
 
@@ -147,16 +164,48 @@ namespace JPEGtoPDF
 
 
                     /// First page
-                    Table table =  
-                        tableStyle(coverAppearance, pageSize, pdoc);
-                    table.GetCell(0, 0).Add(imgs.ElementAt(0));
-                    pdoc.Add(table);
-                    pdoc.Add(new AreaBreak(iText.Layout.Properties.AreaBreakType.NEXT_PAGE));
+                    Table table = null;
+                    try
+                    {
+                        imgs.ElementAt(0).SetAutoScale(true);
+                        
+                        table = tableStyle(coverAppearance, pageSize, pdoc);
+                        
+
+                        table.GetCell(0, 0).SetMargins(0f, 0f, 0f, 0f);
+                        table.GetCell(0,0).SetPaddings(0f, 0f, 0f, 0f);
+
+
+                        table.SetMargins(0f, 0f, 0f, 0f);
+                        table.SetPaddings( 0f, 0f, 0f, 0f);
+                        //table.GetCell(0, 0).SetBorder(BorderStyle.FixedSingle);
+                        table.GetCell(0, 0).SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                        table.GetCell(0, 0).Add(imgs.ElementAt(0));
+
+                        pdoc.Add(table);
+                        
+                        if (imgs.Count >2) pdoc.SetMargins(8.5f, 8.5f, 8.5f, 8.5f);
+                        pdoc.Add(new AreaBreak(iText.Layout.Properties.AreaBreakType.NEXT_PAGE));
+
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                        MessageBox.Show("There's no image selected !", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        pdoc = null;
+                        //pdf = null;
+                        pdf.AddNewPage();
+                        pdf.Close();
+                        writer.Close();
+                        File.Delete(exportFile);
+
+                        return;
+                    }
 
 
                     
 
-                    for (int k = 1; k < listImages.Count - 1; k++)
+                    for (int k = 1, p = 0; k < listImages.Count - 1; k++)
                     {
                         
                         currentImgsList.Add(listImages.ElementAt(k));
@@ -179,24 +228,76 @@ namespace JPEGtoPDF
                                 case "20x20_2P1L": table = Custom.customTable5(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
                                 case "20x20_0P3L": table = Custom.customTable6(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
                                 case "20x20_3P0L": table = Custom.customTable7(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+
+                                case "20x20_4_1P3L": table = Custom.customTable8(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_4_2P2L": table = Custom.customTable9(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_4_0P4L": table = Custom.customTable10(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_4_3P1L": table = Custom.customTable11(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "20x20_4_4P0L": table = Custom.customTable12(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+
+
+                                case "21x30_4_1P3L": table = Custom.customTable13(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_4_2P2L": table = Custom.customTable14(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_4_3P1L": table = Custom.customTable15(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_4_0P4L": table = Custom.customTable16(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_4_4P0L": table = Custom.customTable17(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+
+                                case "21x30_6_5P1L": table = Custom.customTable18(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_1P5L": table = Custom.customTable19(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_2P4L": table = Custom.customTable20(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_3P3L": table = Custom.customTable21(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_4P2L": table = Custom.customTable22(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_0P6L": table = Custom.customTable23(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+                                case "21x30_6_6P0L": table = Custom.customTable24(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs); break;
+
                             }
                             Console.WriteLine("Portraits: "+getPortrait(currentImgsList)+"Landscapes: "+ getLandscape(currentImgsList));
                             currentImgsList.Clear();
                             currentImgs.Clear();
+                           
+                           
+                            
+                            p++;
+                            if(((listImages.Count-2)/appearance.getImgNumber()==p)&& ((listImages.Count - 2)% appearance.getImgNumber() == 0))  pdoc.SetMargins(0f, 0f, 0f, 0f);
 
                             pdoc.Add(table);
                             pdoc.Add(new AreaBreak(iText.Layout.Properties.AreaBreakType.NEXT_PAGE));
-                            //continue;
+                            
                         }
-                       
+                        
+
+
                     }
-                   // Console.WriteLine("Portraits: " + getPortrait(currentImgsList) + "Landscapes: " + getLandscape(currentImgsList));
+                    if (currentImgsList.Count >0)
+                    {
+                        currentAppearance = new Appearance("reminder",appearance.getImgNumber());
+                        table = Custom.customTable3(currentAppearance, pageSize, pdoc, currentImgsList, currentImgs);
+                        currentImgsList.Clear();
+                        currentImgs.Clear();
 
+                        pdoc.Add(table);
 
+                        pdoc.SetMargins(0f, 0f, 0f, 0f);
+                        pdoc.Add(new AreaBreak(iText.Layout.Properties.AreaBreakType.NEXT_PAGE));
+                    }
+                    
 
-                    ///Last Page
+                    imgs.ElementAt(imgs.Count-1).SetAutoScale(true);
+                    
+
                     table = tableStyle(coverAppearance, pageSize, pdoc);
+
+
+                    table.GetCell(0, 0).SetMargins(0f, 0f, 0f, 0f);
+                    table.GetCell(0, 0).SetPaddings(0f, 0f, 0f, 0f);
+
+
+                    table.SetMargins(0f, 0f, 0f, 0f);
+                    table.SetPaddings(0f, 0f, 0f, 0f);
+                    //table.GetCell(0, 0).SetBorder(BorderStyle.FixedSingle);
+                    table.GetCell(0, 0).SetVerticalAlignment(VerticalAlignment.MIDDLE);
                     table.GetCell(0, 0).Add(imgs.ElementAt(imgs.Count-1));
+
                     pdoc.Add(table);
 
 
@@ -222,7 +323,7 @@ namespace JPEGtoPDF
         {
 
             var directories = MetadataExtractor.ImageMetadataReader.ReadMetadata(image.getPath());
-            //Console.WriteLine(directories);
+            
 
 
             foreach (var directory in directories)
@@ -254,8 +355,7 @@ namespace JPEGtoPDF
         {
 
             var directories = MetadataExtractor.ImageMetadataReader.ReadMetadata(image.getPath());
-            //Console.WriteLine(directories);
-
+           
 
             foreach (var directory in directories)
             {
@@ -291,15 +391,16 @@ namespace JPEGtoPDF
 
             table.UseAllAvailableWidth().SetDocument(pdoc);
 
-            table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
+            if(appearance.getImgNumber() == 1) table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight()));
+            else table.SetHeight(UnitValue.CreatePointValue(pageSize.GetHeight() - 17f));
 
             for (int i = 0; i < appearance.getHeightRatio() + 1; i++)
             {
                 for (int j = 0; j < appearance.getDimensions().Length; j++)
                 {
                     Cell cell = new Cell();
-
-                    cell.SetHeight(table.GetHeight().GetValue() / appearance.getHeightRatio() - 4.666f);
+                    if (appearance.getImgNumber() == 1) cell.SetHeight(table.GetHeight().GetValue() / appearance.getHeightRatio());
+                    else cell.SetHeight(table.GetHeight().GetValue() / appearance.getHeightRatio() - 4.666f);
 
                     cellStyle(ref cell);
                     table.AddCell(cell);

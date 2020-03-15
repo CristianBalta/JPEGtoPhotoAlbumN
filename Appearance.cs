@@ -30,6 +30,16 @@ namespace JPEGtoPDF
             
             init(type, this.imgNumber);
         }
+        public Appearance(string specialCond,int imgNumber)
+        {
+            this.type = AppearanceType.Landscape;
+            this.imgNumber = imgNumber;
+            this.specialCond = specialCond;
+
+
+
+            init(type, this.imgNumber);
+        }
         public Appearance(AppearanceType appearanceType, Format format, int imgNumber,int nrLandscape, int nrPortrait)
         {
             
@@ -69,7 +79,7 @@ namespace JPEGtoPDF
                 return;
             }
 
-            if (imgNumber == 4 && ((appearanceType==AppearanceType.Landscape)||(appearanceType == AppearanceType.Portrait)))
+            if ((imgNumber == 4 && ((appearanceType==AppearanceType.Landscape)||(appearanceType == AppearanceType.Portrait))) || specialCond =="reminder")
             {
                 this.dimensions = new float[] { 1, 1 };
                 this.heightRatio = 2;
@@ -196,9 +206,157 @@ namespace JPEGtoPDF
             if (format.formatValue == "20x20 (cm)" && imgNumber == 3 && nrLandscape == 0 && nrPortrait == 3)
             {
                 Console.WriteLine("3 portrete 0 landscape");
-                this.dimensions = new float[] { 1 };
+                this.dimensions = new float[] { 4,1.5f };
                 this.heightRatio = 2;
                 this.specialCond = "20x20_3P0L";
+            }
+
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 4 && nrLandscape == 3 && nrPortrait == 1)
+            {
+                Console.WriteLine("1 portrete 3 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_4_1P3L";
+            }
+
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 4 && nrLandscape == 2 && nrPortrait == 2)
+            {
+                Console.WriteLine("2 portrete 2 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_4_2P2L";
+            }
+
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 4 && nrLandscape == 4 && nrPortrait == 0)
+            {
+                Console.WriteLine("0 portrete 4 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_4_0P4L";
+            }
+
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 4 && nrLandscape == 1 && nrPortrait == 3)
+            {
+                Console.WriteLine("3 portrete 1 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_4_3P1L";
+            }
+
+            if (format.formatValue == "20x20 (cm)" && imgNumber == 4 && nrLandscape == 0 && nrPortrait == 4)
+            {
+                Console.WriteLine("4 portrete 0 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "20x20_4_4P0L";
+            }
+
+
+
+
+
+
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 4 && nrLandscape == 3 && nrPortrait == 1)
+            {
+                Console.WriteLine("1 portrete 3 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_4_1P3L";
+            }
+
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 4 && nrLandscape == 2 && nrPortrait == 2)
+            {
+                Console.WriteLine("2 portrete 2 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_4_2P2L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 4 && nrLandscape == 1 && nrPortrait == 3)
+            {
+                Console.WriteLine("3 portrete 1 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_4_3P1L";
+            }
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 4 && nrLandscape == 4 && nrPortrait == 0)
+            {
+                Console.WriteLine("0 portrete 4 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_4_0P4L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 4 && nrLandscape == 0 && nrPortrait == 4)
+            {
+                Console.WriteLine("4 portrete 0 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_4_4P0L";
+            }
+
+
+
+
+
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 1 && nrPortrait == 5)
+            {
+                Console.WriteLine("5 portrete 1 landscape");
+                this.dimensions = new float[] { 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_5P1L";
+            }
+
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 5 && nrPortrait == 1)
+            {
+                Console.WriteLine("5 portrete 1 landscape");
+                this.dimensions = new float[] {1, 1};
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_1P5L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 4 && nrPortrait ==2)
+            {
+                Console.WriteLine("2 portrete 4 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_2P4L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 3 && nrPortrait == 3)
+            {
+                Console.WriteLine("2 portrete 4 landscape");
+                this.dimensions = new float[] { 1};
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_3P3L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 2 && nrPortrait == 4)
+            {
+                Console.WriteLine("4 portrete 2 landscape");
+                this.dimensions = new float[] { 1,1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_4P2L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 6 && nrPortrait == 0)
+            {
+                Console.WriteLine("0 portrete 6 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_0P6L";
+            }
+
+            if (format.formatValue == "21x30 (cm)" && imgNumber == 6 && nrLandscape == 0 && nrPortrait == 6)
+            {
+                Console.WriteLine("6 portrete 0 landscape");
+                this.dimensions = new float[] { 1, 1 };
+                this.heightRatio = 2;
+                this.specialCond = "21x30_6_6P0L";
             }
 
         }

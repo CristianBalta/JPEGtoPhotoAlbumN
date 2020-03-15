@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JPEGtoPDF.exe" size="169960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JPEGtoPDF.exe" size="925160">
       <assemblyIdentity name="JPEGtoPDF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pwqMoL7TaYk5+ekXlv1FNixSXODu0mZrS9IIddzlom8=</dsig:DigestValue>
+        <dsig:DigestValue>3Nnj1ZCUg4SaGXd9ZZJXbjNGIXLW5EEbGIavPafPrAU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -314,13 +314,13 @@
       <dsig:DigestValue>REb7qidOcuaEFe8Zvf7Pxq73miDT5DBrv+MwhjgyXV0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="JPEGtoPDF.exe.config" size="184">
+  <file name="JPEGtoPDF.exe.config" size="189">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>X+GtgC9o18R9u9jmAWK6iKuu0WLaXTgchdPkk1MRli4=</dsig:DigestValue>
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

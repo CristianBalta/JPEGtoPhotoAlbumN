@@ -51,16 +51,8 @@ namespace JPEGtoPDF
                         break;
 
                 }
-               
-
-                
+              
             }
-
-
-
-            
-
-
         }
 
 
@@ -101,10 +93,6 @@ namespace JPEGtoPDF
                 
                 if (!rx3.IsMatch(matchType.Value)) degree = -degree;
 
-                
-
-
-
                 switch (degree)
                 {
                     case 90: imgPreview.RotateFlip(System.Drawing.RotateFlipType.Rotate90FlipNone); break;
@@ -114,19 +102,9 @@ namespace JPEGtoPDF
                     case -90: imgPreview.RotateFlip(System.Drawing.RotateFlipType.Rotate270FlipNone); break;
                     case -180: imgPreview.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone); break;
                     case -270: imgPreview.RotateFlip(System.Drawing.RotateFlipType.Rotate90FlipNone); break;
-                        
-
                 }
-                
-
-                
             }
-
-            
-
         }
-    
-
     }
 
      class Dimensions
@@ -149,13 +127,13 @@ namespace JPEGtoPDF
                     
                     if (!foundWidth &&(tag.Name == "Image Width") && (directory.Name=="JPEG"  || directory.Name =="JPG" || directory.Name.Contains("JPG") || directory.Name.Contains("JPEG") || directory.Name.Contains("PNG") || directory.Name.Contains("JFIF") || directory.Name.Contains("BMP") || directory.Name.Contains("TIF") || directory.Name.Contains("TIFF") || directory.Name.Contains("GIF")))
                     {
-                        //Console.WriteLine(tag.Name +' '+ tag.Description);
+                       
                         descriptionWidth = tag.Description;
                         foundWidth = true;
                     }
                     if (!foundHeight && (tag.Name == "Image Height") && (directory.Name == "JPEG" || directory.Name == "JPG" || directory.Name.Contains("JPG") || directory.Name.Contains("JPEG") || directory.Name.Contains("PNG") || directory.Name.Contains("JFIF") || directory.Name.Contains("BMP") || directory.Name.Contains("TIF") || directory.Name.Contains("TIFF") || directory.Name.Contains("GIF")))
                     {
-                        //Console.WriteLine(tag.Name + ' ' + tag.Description);
+                        
                         descriptionHeight = tag.Description;
                         foundHeight = true;
                     }
@@ -178,7 +156,7 @@ namespace JPEGtoPDF
             if (image.getHeight() >= image.getWidth()) image.format = "portrait";
             else image.format = "landscape";
             Console.WriteLine( image.ToString()+" "+image.getWidth() + "(width)x" + image.getHeight()+"(height)   "+image.format);
-            //Console.WriteLine(image.ToString() + " " + image.format);
+            
         }
     }
 }
